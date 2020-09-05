@@ -31,4 +31,4 @@ class Tools:
 		await msg.delete()
 
 def setup(client):
-	client.add_cog(MainCog(client))
+	client.add_cog(Tools(client))
