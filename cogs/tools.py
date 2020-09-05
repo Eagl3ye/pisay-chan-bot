@@ -2,8 +2,8 @@ import discord
 from discord.ext import commands
 
 class Tools:
-    def __init__(self, client):
-        self.client = client
+	def __init__(self, client):
+		self.client = client
 
 	@commands.command(name="university",alias="uni")
 	@commands.has_guild_permissions(administrator=True)

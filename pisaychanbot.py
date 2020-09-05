@@ -5,6 +5,7 @@ import random
 import asyncio
 
 client = commands.Bot(command_prefix = 'p+')
+
 @client.event
 async def on_ready():
 	await client.change_presence(status=discord.Status.idle, activity=discord.Game("with all the Iskolar ng Bayan"))
