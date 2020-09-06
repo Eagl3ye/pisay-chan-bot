@@ -7,7 +7,7 @@ class Tools(commands.Cog):
 
 	@commands.Cog.listener()
 	async def on_message(self, message):
-		print(message)
+		print(message.content)
 
 	@commands.command(name="university",aliases=['univ', 'uni', 'u'])
 	@commands.has_guild_permissions(administrator=True)
