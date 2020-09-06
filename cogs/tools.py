@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+import os
 
 class Tools(commands.Cog):
 	def __init__(self, client):
@@ -7,7 +8,9 @@ class Tools(commands.Cog):
 
 	@commands.Cog.listener()
 	async def on_message(self, message):
-		print(message.content)
+		if (message.content).lower() in ["i accept","accept"] and message.channel.id == 750671608531648613:
+			print("ACCEPTED!")
+			print(message.content)
 
 	@commands.command(name="university",aliases=['univ', 'uni', 'u'])
 	@commands.has_guild_permissions(administrator=True)
@@ -32,13 +35,12 @@ class Tools(commands.Cog):
 		for react, role in zip(reacts, roles):
 			embed.add_field(name=react+' **'+role+'**', value='\u200b', inline=True)
 		
-		
 		await ctx.send(embed=embed)
 		await msg.delete()
 
 	@commands.command(name="embed")
 	@commands.has_guild_permissions(administrator=True)
-	async def embed(ctx, color_r=0, color_g=0, color_b=0, *, content:str):
+	async def embed(self, ctx, color_r=0, color_g=0, color_b=0, *, content:str):
 		msg = ctx.message
 		content = content.split("|")
 		title = (content[0]).strip()
