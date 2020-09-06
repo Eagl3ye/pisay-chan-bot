@@ -5,7 +5,11 @@ class Tools(commands.Cog):
 	def __init__(self, client):
 		self.client = client
 
-	@commands.command(name="university",alias="uni")
+	@commands.Cog.listener()
+	async def on_message(self, message):
+		print(message)
+
+	@commands.command(name="university",aliases=['univ', 'uni', 'u'])
 	@commands.has_guild_permissions(administrator=True)
 	async def university(self, ctx):
 		msg = ctx.message
@@ -27,6 +31,22 @@ class Tools(commands.Cog):
 			)
 		for react, role in zip(reacts, roles):
 			embed.add_field(name=react+' **'+role+'**', value='\u200b', inline=True)
+		
+		
+		await ctx.send(embed=embed)
+		await msg.delete()
+
+	@commands.command(name="embed")
+	@commands.has_guild_permissions(administrator=True)
+	async def embed(ctx, color_r=0, color_g=0, color_b=0, *, content:str):
+		msg = ctx.message
+		content = content.split("|")
+		title = (content[0]).strip()
+		embed = discord.Embed(
+			title=(content[0]).strip(),
+			description=(content[1]).strip(),
+			colour=discord.Colour.from_rgb(color_r, color_g, color_b)
+			)
 		await ctx.send(embed=embed)
 		await msg.delete()
 
