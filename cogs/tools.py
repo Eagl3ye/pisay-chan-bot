@@ -43,7 +43,8 @@ class Tools(commands.Cog):
 			description=(content[1]).strip(),
 			colour=discord.Colour.from_rgb(color_r, color_g, color_b)
 			)
-		embed.set_thumbnail("https://"+(content[2]).strip())
+		print((content[2]).strip())
+		#embed.set_thumbnail((content[2]).strip())
 		await ctx.send(embed=embed)
 		await msg.delete()
 '''
