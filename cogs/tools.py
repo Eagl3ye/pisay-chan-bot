@@ -5,25 +5,7 @@ import os
 class Tools(commands.Cog):
 	def __init__(self, client):
 		self.client = client
-'''
-	def compareChannelID(self, channelid):
-		ret_value = False
-		if int(os.environ['AGREEMENT_CHID']) == 0:
-			print("Command: Aggreement | AGREEMENT_CHID is empty")
-			ret_value = False
-		else:
-			ret_value = channelid == os.environ['AGREEMENT_CHID']
-			print("Command: Aggreement | AGREEMENT_CHID and the target channel is " + str(ret_value))
-		return ret_value
 
-	@commands.Cog.listener()
-	async def on_message(self, message):
-		msg = message
-		if (message.content).lower() in ["i accept","accept"] and self.compareChannelID(message.channel.id):
-			print("ACCEPTED!")
-			print(message.content)
-		await msg.delete()
-'''
 	@commands.command(name="university", aliases=['univ', 'uni', 'u'])
 	@commands.has_guild_permissions(administrator=True)
 	async def university(self, ctx):
@@ -78,6 +60,25 @@ class Tools(commands.Cog):
 			)
 		await ctx.send(embed=embed)
 		await msg.delete()
+
+	def compareChannelID(self, channelid):
+		ret_value = False
+		if int(os.environ['AGREEMENT_CHID']) == 0:
+			print("Command: Aggreement | AGREEMENT_CHID is empty")
+			ret_value = False
+		else:
+			ret_value = channelid == os.environ['AGREEMENT_CHID']
+			print("Command: Aggreement | AGREEMENT_CHID and the target channel is " + str(ret_value))
+		return ret_value
+
+	@commands.Cog.listener()
+	async def on_message(self, message):
+		msg = message
+		if (message.content).lower() in ["i accept","accept"] and self.compareChannelID(message.channel.id):
+			print("ACCEPTED!")
+			print(message.content)
+		await msg.delete()
+
 '''
 def setup(client):
 	client.add_cog(Tools(client))
