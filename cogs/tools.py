@@ -5,14 +5,26 @@ import os
 class Tools(commands.Cog):
 	def __init__(self, client):
 		self.client = client
+'''
+	def compareChannelID(self, channelid):
+		ret_value = False
+		if int(os.environ['AGREEMENT_CHID']) == 0:
+			print("Command: Aggreement | AGREEMENT_CHID is empty")
+			ret_value = False
+		else:
+			ret_value = channelid == os.environ['AGREEMENT_CHID']
+			print("Command: Aggreement | AGREEMENT_CHID and the target channel is " + str(ret_value))
+		return ret_value
 
 	@commands.Cog.listener()
 	async def on_message(self, message):
-		if (message.content).lower() in ["i accept","accept"] and message.channel.id == 750671608531648613:
+		msg = message
+		if (message.content).lower() in ["i accept","accept"] and self.compareChannelID(message.channel.id):
 			print("ACCEPTED!")
 			print(message.content)
-
-	@commands.command(name="university",aliases=['univ', 'uni', 'u'])
+		await msg.delete()
+'''
+	@commands.command(name="university", aliases=['univ', 'uni', 'u'])
 	@commands.has_guild_permissions(administrator=True)
 	async def university(self, ctx):
 		msg = ctx.message
@@ -49,8 +61,23 @@ class Tools(commands.Cog):
 			description=(content[1]).strip(),
 			colour=discord.Colour.from_rgb(color_r, color_g, color_b)
 			)
+		embed.set_thumbnail((content[2]).strip())
 		await ctx.send(embed=embed)
 		await msg.delete()
-
+'''
+	@commands.command(name="setagree", aliases=['agreezone', 'uni', 'u'])
+	@commands.has_guild_permissions(administrator=True)
+	async def embed(self, ctx, color_r=0, color_g=0, color_b=0, *, content:str):
+		msg = ctx.message
+		content = content.split("|")
+		title = (content[0]).strip()
+		embed = discord.Embed(
+			title=(content[0]).strip(),
+			description=(content[1]).strip(),
+			colour=discord.Colour.from_rgb(color_r, color_g, color_b)
+			)
+		await ctx.send(embed=embed)
+		await msg.delete()
+'''
 def setup(client):
 	client.add_cog(Tools(client))
