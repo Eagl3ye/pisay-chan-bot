@@ -39,16 +39,15 @@ class Tools(commands.Cog):
 		content = content.split("|")
 		embed = discord.Embed(
 			title=(content[0]).strip(),
-			description=(content[2]).strip(),
+			description=(content[1]).strip(),
 			colour=discord.Colour.from_rgb(color_r, color_g, color_b)
 			)
-		embed.set_thumbnail(url = (content[2]).strip())
 		await ctx.send(embed=embed)
 		await msg.delete()
 '''
 	@commands.command(name="setagree", aliases=['agreezone', 'uni', 'u'])
 	@commands.has_guild_permissions(administrator=True)
-	async def embed(self, ctx, color_r=0, color_g=0, color_b=0, *, content:str):
+	async def setagree(self, ctx, color_r=0, color_g=0, color_b=0, *, content:str):
 		msg = ctx.message
 		content = content.split("|")
 		title = (content[0]).strip()
