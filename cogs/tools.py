@@ -37,14 +37,13 @@ class Tools(commands.Cog):
 	async def embed(self, ctx, color_r=0, color_g=0, color_b=0, *, content:str):
 		msg = ctx.message
 		content = content.split("|")
-		title = (content[0]).strip()
 		embed = discord.Embed(
 			title=(content[0]).strip(),
-			description=(content[1]).strip(),
+			description=(content[2]).strip(),
 			colour=discord.Colour.from_rgb(color_r, color_g, color_b)
 			)
-		print((content[2]).strip())
-		#embed.set_thumbnail((content[2]).strip())
+		print((content[1]).strip())
+		#embed.set_thumbnail(url = (content[2]).strip())
 		await ctx.send(embed=embed)
 		await msg.delete()
 '''
