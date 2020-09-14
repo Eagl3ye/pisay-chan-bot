@@ -56,7 +56,8 @@ class Tools(commands.Cog):
 			description=(content[1]).strip(),
 			colour=discord.Colour.from_rgb(color_r, color_g, color_b)
 			)
-		embed.set_footer(text=msg.created_at, icon_url=content[3].strip())
+		embed.set_image(url=content[3].strip())
+		embed.set_footer(text=msg.created_at.now())
 		await ctx.send(embed=embed)
 		await msg.delete()
 '''
