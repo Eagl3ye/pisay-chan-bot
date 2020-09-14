@@ -44,6 +44,33 @@ class Tools(commands.Cog):
 			)
 		await ctx.send(embed=embed)
 		await msg.delete()
+		
+	@commands.command(name="rhe")
+	@commands.has_guild_permissions(administrator=True)
+	async def rhe(self, ctx):
+		msg = ctx.message
+		embed = discord.Embed(
+			title="CHECK INVENTORY",
+			colour=discord.Colour.from_rgb(190, 0, 160)
+			)
+		embed.set_image(url='https://cdn.discordapp.com/emojis/568572122226491395.png?v=1')
+		await ctx.send(embed=embed)
+		await msg.delete()
+
+	@commands.command(name="publish", aliases=['pub'])
+	@commands.has_guild_permissions(administrator=True)
+	async def publish(self, ctx, color_r=0, color_g=0, color_b=0, *, content:str):
+		msg = ctx.message
+		content = content.split("|")
+		await ctx.send(content[3].strip())
+		embed = discord.Embed(
+			title=(content[0]).strip(),
+			description=(content[1]).strip(),
+			colour=discord.Colour.from_rgb(color_r, color_g, color_b)
+			)
+		embed.set_footer(text=msg.created_at, icon_url=content[4].strip())
+		await ctx.send(embed=embed)
+		await msg.delete()
 '''
 	@commands.command(name="setagree", aliases=['agreezone', 'uni', 'u'])
 	@commands.has_guild_permissions(administrator=True)
