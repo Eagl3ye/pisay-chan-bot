@@ -57,7 +57,7 @@ class Tools(commands.Cog):
 			colour=discord.Colour.from_rgb(color_r, color_g, color_b)
 			)
 		embed.set_image(url=content[3].strip())
-		embed.set_footer(text=msg.created_at.now())
+		embed.set_footer(text=msg.created_at.now(pytz.timezone('Asia/Manila')).date())
 		await ctx.send(embed=embed)
 		await msg.delete()
 '''
