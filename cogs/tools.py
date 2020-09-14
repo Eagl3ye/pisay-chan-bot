@@ -44,19 +44,7 @@ class Tools(commands.Cog):
 			)
 		await ctx.send(embed=embed)
 		await msg.delete()
-'''
-	@commands.command(name="rhe")
-	@commands.has_guild_permissions(administrator=True)
-	async def rhe(self, ctx):
-		msg = ctx.message
-		embed = discord.Embed(
-			title="CHECK INVENTORY",
-			colour=discord.Colour.from_rgb(190, 0, 160)
-			)
-		embed.set_image(url='https://cdn.discordapp.com/emojis/568572122226491395.png?v=1')
-		await ctx.send(embed=embed)
-		await msg.delete()
-'''
+
 	@commands.command(name="publish", aliases=['pub'])
 	@commands.has_guild_permissions(administrator=True)
 	async def publish(self, ctx, color_r=0, color_g=0, color_b=0, *, content:str):
@@ -102,6 +90,18 @@ class Tools(commands.Cog):
 		if (message.content).lower() in ["i accept","accept"] and self.compareChannelID(message.channel.id):
 			print("ACCEPTED!")
 			print(message.content)
+		await msg.delete()
+
+	@commands.command(name="rhe")
+	@commands.has_guild_permissions(administrator=True)
+	async def rhe(self, ctx):
+		msg = ctx.message
+		embed = discord.Embed(
+			title="CHECK INVENTORY",
+			colour=discord.Colour.from_rgb(190, 0, 160)
+			)
+		embed.set_image(url='https://cdn.discordapp.com/emojis/568572122226491395.png?v=1')
+		await ctx.send(embed=embed)
 		await msg.delete()
 
 '''
