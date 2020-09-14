@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands
 import os
-import pytz
 
 class Tools(commands.Cog):
 	def __init__(self, client):
@@ -58,7 +57,7 @@ class Tools(commands.Cog):
 			colour=discord.Colour.from_rgb(color_r, color_g, color_b)
 			)
 		embed.set_image(url=content[3].strip())
-		embed.set_footer(text=msg.created_at.now(pytz.timezone('US/Pacific')).date())
+		embed.set_footer(text=msg.created_at.date())
 		await ctx.send(embed=embed)
 		await msg.delete()
 '''
