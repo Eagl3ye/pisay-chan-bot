@@ -1,2 +1,2 @@
 git+https://github.com/Rapptz/discord.py
-git+https://github.com/stub42/pytz.git
+git+https://github.com/newvem/pytz.git
