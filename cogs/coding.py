@@ -9,10 +9,9 @@ class Coding(commands.Cog):
 	@commands.Cog.listener()
 	async def on_message(self, message):
 		msg = message
-		print(message)
-		#if (message.content).lower() in ["i accept","accept"] and self.compareChannelID(message.channel.id):
-		#	print("ACCEPTED!")
-		#	print(message.content)
+		if message.channel.id == 762322266116980786:
+			print("<#762322266116980786>:")
+			print(message.content)
 		#await msg.delete()
 
 def setup(client):
