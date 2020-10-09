@@ -14,10 +14,10 @@ class Coding(commands.Cog):
 			codedisc = message.content.split("```")[1].split("\n")
 			if codedisc[0] in ['py','python']:
 				for codeline in range(1,len(codedisc)-1):
-					print(codeline) 
+					print(codedisc[codeline]) 
 			else:
 				for codeline in range(0,len(codedisc)-1):
-					print(codeline)
+					print(codedisc[codeline])
 		#await msg.delete()
 
 def setup(client):
