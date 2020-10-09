@@ -11,7 +11,7 @@ class Coding(commands.Cog):
 		msg = message
 		if message.channel.id == 762322266116980786:
 			print("<#762322266116980786>:")
-			print(message.content.split("```"))
+			print(message.content.split("```")[1].split("\n"))
 		#await msg.delete()
 
 def setup(client):
