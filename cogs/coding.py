@@ -9,7 +9,7 @@ class Coding(commands.Cog):
 	@commands.Cog.listener()
 	async def on_message(self, message):
 		msg = message
-		if message.channel.id == 762322266116980786:
+		if message.guild.id == 762322266116980786:
 			print("<#762322266116980786>:")
 			codedisc = message.content.split("```")[1].split("\n")
 			if codedisc[0] in ['py','python']:

@@ -13,7 +13,7 @@ async def on_ready():
 	print(client.user.name)
 	print(client.user.id)
 
-cogs = ["cogs.tools","cogs.coding"]
+cogs = ["cogs.tools","cogs.coding","cogs.seasonal"]
 for cog in cogs:
 	client.load_extension(cog)
 client.run(os.environ['TOKEN'])
