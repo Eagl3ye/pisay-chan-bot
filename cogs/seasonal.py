@@ -34,12 +34,14 @@ class Seasonal(commands.Cog):
 		with open("../cache/cache_spooktober.data",'r') as f:
 			try:
 				self.datamap = ast.literal_eval(f.readlines()[0])
+				print(self.datamap)
 			except IndexError:
 				pass
 
 	@commands.command(name="ignore")
 	@commands.has_guild_permissions(administrator=True)	
 	async def ignore(self, ctx):
+		print(self.ignored_channels) ###################################
 		if ctx.channel.id not in self.ignored_channels:
 			self.ignored_channels.append(ctx.channel.id) 
 			embed = discord.Embed(
@@ -54,11 +56,13 @@ class Seasonal(commands.Cog):
 				colour=discord.Colour.from_rgb(230, 135, 0)
 			)
 		embed.set_footer(text=ctx.channel.name)	
+		print(self.ignored_channels) ###################################
 		await ctx.send(embed=embed)
 
 	@commands.command(name="unignore")
 	@commands.has_guild_permissions(administrator=True)	
 	async def unignore(self, ctx):
+		print(self.ignored_channels) ###################################
 		if ctx.channel.id in self.ignored_channels:
 			self.ignored_channels.pop(ctx.channel.id) 
 			embed = discord.Embed(
@@ -72,12 +76,14 @@ class Seasonal(commands.Cog):
 				description=":white_check_mark: | Trick or treating is already allowed on this channel",
 				colour=discord.Colour.from_rgb(230, 135, 0)
 			)
-		embed.set_footer(text=ctx.channel.name)	
+		embed.set_footer(text=ctx.channel.name)
 		await ctx.send(embed=embed)
+		print(self.ignored_channels) ###################################
 
 	@commands.command(name="activate")
 	@commands.has_guild_permissions(administrator=True)	
 	async def activate(self, ctx):
+		print(self.self.allowed_guilds) ###################################
 		if ctx.guild.id not in self.allowed_guilds:
 			self.ignored_channels.append(ctx.guild.id) 
 			embed = discord.Embed(
@@ -92,6 +98,7 @@ class Seasonal(commands.Cog):
 				colour=discord.Colour.from_rgb(230, 135, 0)
 			)
 		embed.set_footer(text=ctx.channel.name)	
+		print(self.self.allowed_guilds) ###################################
 		await ctx.send(embed=embed)
 
 	@commands.command(name="mycandy")	
