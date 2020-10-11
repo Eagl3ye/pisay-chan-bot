@@ -31,13 +31,16 @@ class Seasonal(commands.Cog):
 
 	def getCache(self):
 		self.checkCache()
-		with open("../cache/cache_spooktober.data",'r') as f:
-			try:
-				self.datamap = ast.literal_eval(f.readlines()[0])
-				print(self.datamap)
-			except IndexError:
-				pass
-
+		try:
+			with open("../cache/cache_spooktober.data",'r') as f:
+				try:
+					self.datamap = ast.literal_eval(f.readlines()[0])
+					print(self.datamap)
+				except IndexError:
+					pass
+		except FileNotFoundError:
+			pass
+			
 	@commands.command(name="ignore")
 	@commands.has_guild_permissions(administrator=True)	
 	async def ignore(self, ctx):
@@ -85,7 +88,7 @@ class Seasonal(commands.Cog):
 	async def activate(self, ctx):
 		print(self.allowed_guilds) ###################################
 		if ctx.guild.id not in self.allowed_guilds:
-			self.ignored_channels.append(ctx.guild.id) 
+			self.allowed_guilds.append(ctx.guild.id) 
 			embed = discord.Embed(
 				title=":jack_o_lantern: Seasonal Sppoktober Event :jack_o_lantern:",
 				description="This event is now activated on this guild",
