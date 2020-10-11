@@ -83,7 +83,7 @@ class Seasonal(commands.Cog):
 	@commands.command(name="activate")
 	@commands.has_guild_permissions(administrator=True)	
 	async def activate(self, ctx):
-		print(self.self.allowed_guilds) ###################################
+		print(self.allowed_guilds) ###################################
 		if ctx.guild.id not in self.allowed_guilds:
 			self.ignored_channels.append(ctx.guild.id) 
 			embed = discord.Embed(
@@ -98,7 +98,7 @@ class Seasonal(commands.Cog):
 				colour=discord.Colour.from_rgb(230, 135, 0)
 			)
 		embed.set_footer(text=ctx.channel.name)	
-		print(self.self.allowed_guilds) ###################################
+		print(self.allowed_guilds) ###################################
 		await ctx.send(embed=embed)
 
 	@commands.command(name="mycandy")	
