@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import os
 import random
+import ast
 
 class Seasonal(commands.Cog):
 	def __init__(self, client):
